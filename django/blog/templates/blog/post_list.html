@@ -1,0 +1,41 @@
+{% extends "pages/base.html" %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<h1>
+    {% if active_category %}Posts in: {{ active_category.name }}
+    {% else %}All Posts{% endif %}
+</h1>
+
+<div class="two-col">
+<section>
+    {% for post in posts %}
+    <article class="post-card">
+        <h2><a href="{% url 'blog:post-detail' post.slug %}">{{ post.title }}</a></h2>
+        <p class="post-meta">
+            {{ post.pub_date|date:"d M Y" }}
+            {% if post.category %} &mdash; {{ post.category.name }}{% endif %}
+            &mdash; {{ post.comment_count }} comment{{ post.comment_count|pluralize }}
+        </p>
+        <p>{{ post.body|truncatewords:30 }}</p>
+    </article>
+    {% empty %}
+    <p>No posts yet. <a href="/admin/blog/post/add/">Add one in admin →</a></p>
+    {% endfor %}
+    {% if user.is_staff %}
+    <p><a href="{% url 'blog:post-create' %}">+ New post</a></p>
+    {% endif %}
+</section>
+
+<aside>
+    <h3>Categories</h3>
+    <ul>
+        {% for cat in categories %}
+        <li><a href="{% url 'blog:category-posts' cat.slug %}">{{ cat.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'blog:post-list' %}">All posts</a></p>
+</aside>
+</div>
+{% endblock %}

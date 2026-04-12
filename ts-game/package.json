@@ -1,0 +1,16 @@
+{
+  "name": "ts-game",
+  "version": "1.0.0",
+  "description": "Minesweeper game with TypeScript frontend and Django backend.",
+  "scripts": {
+    "check": "tsc --noEmit",
+    "build": "npm run check && esbuild pages/static/pages/ts/main.ts --bundle --outfile=pages/static/pages/js/main.js --sourcemap",
+    "watch": "esbuild pages/static/pages/ts/main.ts --bundle --outfile=pages/static/pages/js/main.js --sourcemap --watch"
+  },
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "esbuild": "^0.28.0",
+    "typescript": "^6.0.3"
+  }
+}

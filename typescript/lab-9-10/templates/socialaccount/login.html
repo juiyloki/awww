@@ -1,0 +1,32 @@
+{% extends "pages/base.html" %}
+{% load i18n %}
+
+{% block title %}
+    {% if process == "connect" %}Connect {{ provider.name }}{% else %}Sign In Via {{ provider.name }}{% endif %}
+{% endblock %}
+
+{% block content %}
+<article>
+    <h1>
+        {% if process == "connect" %}
+            Connect {{ provider.name }}
+        {% else %}
+            Sign In Via {{ provider.name }}
+        {% endif %}
+    </h1>
+    <section>
+        <p>
+            {% if process == "connect" %}
+                You are about to connect a new third-party account from {{ provider.name }}.
+            {% else %}
+                You are about to sign in using a third-party account from {{ provider.name }}.
+            {% endif %}
+        </p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Continue</button>
+        </form>
+        <p><a href="{% url 'home' %}">← Cancel</a></p>
+    </section>
+</article>
+{% endblock %}

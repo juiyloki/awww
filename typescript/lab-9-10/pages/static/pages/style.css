@@ -1,0 +1,394 @@
+/* style.css — single stylesheet shared across all pages */
+
+
+/* Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Design tokens */
+:root {
+    --primary-color: #9d3fd4;
+    --text-color:    #5c2d8c;
+    --bg-color:      #f0d7f8;
+    --font-main:     'Segoe UI', system-ui, sans-serif;
+    --spacing-md:    1rem;
+    --spacing-lg:    2rem;
+}
+
+
+/* Body */
+body {
+    font-family: var(--font-main);
+    color: var(--text-color);
+    background: var(--bg-color);
+    font-size: 16px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+
+/* Headings */
+h1, h2, h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+h1 { font-size: 2rem;   }
+h2 { font-size: 1.4rem; }
+h3 { font-size: 1.1rem; }
+
+
+/* Links */
+a {
+    color: var(--primary-color);
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+
+/* Header */
+header {
+    background: var(--bg-color);
+    padding: 1rem 2rem;
+    border-bottom: 2px solid var(--primary-color);
+    margin-bottom: var(--spacing-lg);
+}
+
+
+/* Nav */
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 0.25rem;
+}
+
+nav ul li a {
+    display: block;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+nav ul li a:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+/* Logout form: strip padding so it sits flush in the nav */
+nav ul li form {
+    padding: 0;
+    margin: 0;
+}
+
+/* Match link style for the logout button */
+nav ul li button[type="submit"] {
+    appearance: none;
+    display: block;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: var(--font-main);
+    line-height: inherit;
+    cursor: pointer;
+    background: none;
+    color: var(--primary-color);
+    border: none;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+nav ul li button[type="submit"]:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+/* Greeting shown after nav links when logged in */
+.nav-greeting {
+    display: block;
+    padding: 0.4rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    opacity: 0.65;
+}
+
+
+/* Main */
+main {
+    padding: var(--spacing-lg);
+}
+
+/* Two-column layout with sidebar */
+.two-col {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+}
+
+.two-col > article,
+.two-col > section {
+    flex: 1;
+}
+
+aside {
+    flex: 0 0 250px;
+    border-left: 3px solid var(--primary-color);
+    background: #fff;
+    border-radius: 8px;
+    padding: var(--spacing-md);
+}
+
+aside ul {
+    padding-left: 1.25rem;
+}
+
+
+/* Sections */
+section {
+    margin-bottom: var(--spacing-lg);
+}
+
+section p,
+section ul {
+    margin-top: 0.5rem;
+    line-height: 1.7;
+}
+
+section ul {
+    padding-left: 1.5rem;
+}
+
+
+/* Footer */
+footer {
+    border-top: 1px solid #ddd;
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: center;
+    color: #888;
+    font-size: 0.9rem;
+    margin-top: var(--spacing-lg);
+}
+
+
+/* Responsive card grid */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg) 0;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .06);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+
+/* Forms */
+form {
+    padding: var(--spacing-lg) 0;
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    background: #fff;
+    margin-bottom: var(--spacing-md);
+}
+
+legend {
+    font-weight: 600;
+    color: var(--primary-color);
+    padding: 0 0.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+input,
+textarea,
+select {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: var(--spacing-md);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: var(--font-main);
+    font-size: 1rem;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(44, 123, 229, 0.2);
+}
+
+button[type="submit"] {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button[type="submit"]:hover {
+    background: #7a28b0;
+}
+
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--spacing-md);
+}
+
+th, td {
+    text-align: left;
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid rgba(157, 63, 212, 0.15);
+}
+
+thead th {
+    color: var(--primary-color);
+    font-weight: 700;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+tbody tr:hover {
+    background: rgba(157, 63, 212, 0.05);
+}
+
+/* Data table (profile page) */
+.data-table {
+    max-width: 480px;
+}
+
+.data-table th {
+    width: 130px;
+    color: var(--primary-color);
+}
+
+
+/* Blog post cards */
+.post-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 2px 6px rgba(157, 63, 212, 0.08);
+    border-left: 4px solid var(--primary-color);
+}
+
+.post-card h2 {
+    margin-bottom: 0.3rem;
+}
+
+
+/* Blog post detail */
+.post-meta {
+    color: var(--primary-color);
+    opacity: 0.7;
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.post-body {
+    margin: var(--spacing-md) 0 var(--spacing-lg);
+    line-height: 1.8;
+}
+
+
+/* Comments */
+.comment {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    border-left: 3px solid var(--primary-color);
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.4rem;
+}
+
+.comment-header strong {
+    color: var(--primary-color);
+}
+
+.comment-date {
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+
+/* Mobile: ≤ 768px */
+@media (max-width: 768px) {
+
+    .two-col {
+        flex-direction: column;
+    }
+
+    aside {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+/* Blog browser */
+.focused { outline: 2px solid steelblue; outline-offset: 4px; }
+.error   { color: red; font-size: 0.85em; }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- viewport makes the page scale correctly on phones -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <!-- header: the top banner area of the page -->
+    <header>
+        <!-- nav: marks this list as site navigation: screen readers announce it specially -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- main: the primary content of the page -->
+    <main>
+
+        <!-- article: a self-contained piece of content that would make sense on its own -->
+        <article>
+            <h1>About Me</h1>
+
+            <!-- section: a thematic grouping inside the article -->
+            <section>
+                <h2>Education</h2>
+                <p>
+                    I am a second-year Computer Science student at University of Warsaw.
+                </p>
+            </section>
+
+            <section>
+                <h2>Skills</h2>
+                <!-- unordered list — order doesn't matter for a skill list -->
+                <ul>
+                    <li>Python, C/C++, Java</li>
+                    <li>Problem Solving</li>
+                    <li>Algorithms and Data Structures</li>
+                    <li>Git, Docker, Linux &amp; bash</li>
+                </ul>
+            </section>
+        </article>
+
+        <!-- aside: related but secondary content (sidebar) -->
+        <aside>
+            <!-- details/summary: a native browser collapsible section, no JS needed -->
+            <details>
+                <summary>Fun Fact</summary>
+                <p>I have two dumb cats.</p>
+            </details>
+        </aside>
+
+    </main>
+
+    <!-- footer: bottom of the page — copyright, links, etc. -->
+    <footer>
+        <p>&copy; Agata Kopec</p>
+    </footer>
+
+</body>
+</html>

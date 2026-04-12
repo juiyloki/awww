@@ -1,0 +1,14 @@
+{% extends "pages/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<article>
+    <h1>{{ heading }}</h1>
+    <section>
+        <p>You have visited this page <strong>{{ visit_count }}</strong> time{{ visit_count|pluralize }} this session.</p>
+        <p>The server time is: {{ server_time }}</p>
+        <p><a href="{% url 'greet' name='World' %}">Say hello! →</a></p>
+    </section>
+</article>
+{% endblock %}

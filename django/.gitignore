@@ -1,0 +1,10 @@
+db.sqlite3
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+*.egg-info/
+dist/
+build/

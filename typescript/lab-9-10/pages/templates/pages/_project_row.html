@@ -1,0 +1,6 @@
+<tr>
+    <td>{% if project.url %}<a href="{{ project.url }}" target="_blank" rel="noopener noreferrer">{{ project.name }}</a>{% else %}{{ project.name }}{% endif %}</td>
+    <td>{{ project.lang }}</td>
+    <td>{{ project.year }}</td>
+    <td>{% if project.done %}✅{% else %}🔄{% endif %}</td>
+</tr>

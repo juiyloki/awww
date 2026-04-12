@@ -1,0 +1,48 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Site{% endblock %} — MyApp</title>
+    <link rel="stylesheet" href="{% static 'pages/style.css' %}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'projects' %}">Projects</a></li>
+                <li><a href="{% url 'blog:post-list' %}">Blog</a></li>
+                <li><a href="{% url 'guestbook' %}">Guestbook</a></li>
+                <li><a href="{% url 'api-demo' %}">API Demo</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li>
+                        <form method="POST" action="{% url 'account_logout' %}" style="display:inline">
+                            {% csrf_token %}
+                            <button type="submit">Logout</button>
+                        </form>
+                    </li>
+                    <li><span class="nav-greeting">Hello, {{ user.username }}</span></li>
+                {% else %}
+                    <li><a href="{% url 'account_login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                    <li><a href="{% provider_login_url 'github' %}">Login with GitHub</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>{% block footer_text %}© 2025 Agata Kopeć{% endblock %}</p>
+    </footer>
+</body>
+</html>

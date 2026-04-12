@@ -1,0 +1,29 @@
+{% extends "pages/base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<div class="two-col">
+<article>
+    <h1>About Me</h1>
+    <section>
+        <h2>Education</h2>
+        <p>{{ education }}</p>
+    </section>
+    <section>
+        <h2>Skills</h2>
+        <ul>
+            {% for skill in skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+</article>
+<aside>
+    <details open>
+        <summary>Fun Fact</summary>
+        <p>{{ fun_fact }}</p>
+    </details>
+</aside>
+</div>
+{% endblock %}

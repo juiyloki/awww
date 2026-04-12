@@ -1,0 +1,13 @@
+{
+  "name": "lab-8",
+  "version": "1.0.0",
+  "scripts": {
+    "check": "tsc --noEmit",
+    "build": "npm run check && esbuild src/main.ts --bundle --outfile=dist/main.js --sourcemap",
+    "dev": "esbuild src/main.ts --bundle --outfile=dist/main.js --sourcemap --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.2",
+    "typescript": "^5.4.5"
+  }
+}

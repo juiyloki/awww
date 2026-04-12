@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Minesweeper{% endblock %} | ts-game</title>
+    <link rel="stylesheet" href="{% static 'pages/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'home' %}">Home</a>
+
+            <span class="nav-spacer"></span>
+
+            {% if user.is_authenticated %}
+                <span>Hello, {{ user.username }}</span>
+                <a href="{% url 'profile' %}">Profile</a>
+                <form method="POST" action="{% url 'logout' %}" class="logout-form">
+                    {% csrf_token %}
+                    <button type="submit">Log out</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Log in</a>
+                <a href="{% url 'register' %}">Register</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Minesweeper</p>
+    </footer>
+
+    <script src="{% static 'pages/js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends "pages/base.html" %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+<article>
+<h1>{{ done_count }} completed project{{ done_count|pluralize }}</h1>
+
+<section>
+<form method="GET">
+    <input type="text" name="q" value="{{ q }}" placeholder="Search by name or language…">
+    <button type="submit">Search</button>
+    {% if q %}<a href="{% url 'projects' %}">Clear</a>{% endif %}
+</form>
+
+{% if q %}<p>Showing results for "<strong>{{ q }}</strong>".</p>{% endif %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Language</th>
+            <th>Year</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for project in project_list %}
+            {% include "pages/_project_row.html" %}
+        {% empty %}
+            <tr><td colspan="4">No projects match "{{ q }}".</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<p>Total shown: {{ project_list|length }}</p>
+</section>
+</article>
+{% endblock %}

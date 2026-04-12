@@ -1,0 +1,9 @@
+[
+    {"model": "blog.category", "pk": 1, "fields": {"name": "University", "slug": "university"}},
+    {"model": "blog.category", "pk": 2, "fields": {"name": "Work",       "slug": "work"}},
+    {"model": "blog.category", "pk": 3, "fields": {"name": "Hobby",      "slug": "hobby"}},
+    {"model": "blog.category", "pk": 4, "fields": {"name": "Family",     "slug": "family"}},
+    {"model": "blog.category", "pk": 5, "fields": {"name": "Pets",       "slug": "pets"}},
+    {"model": "blog.category", "pk": 6, "fields": {"name": "Politics",   "slug": "politics"}},
+    {"model": "blog.category", "pk": 7, "fields": {"name": "Sports",     "slug": "sports"}}
+]

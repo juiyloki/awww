@@ -1,0 +1,50 @@
+{% extends "pages/base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<article>
+    <h1>{{ post.title }}</h1>
+    <p class="post-meta">
+        {{ post.pub_date|date:"d M Y" }}
+        {% if post.category %} &mdash; {{ post.category.name }}{% endif %}
+        &mdash; viewed {{ post.view_count }} time{{ post.view_count|pluralize }}
+    </p>
+    <div class="post-body">{{ post.body|linebreaks }}</div>
+    <p><a href="{% url 'blog:post-list' %}">← All Posts</a></p>
+</article>
+
+<section id="comments">
+    <h2>{{ comments|length }} comment{{ comments|length|pluralize }}</h2>
+    {% for comment in comments %}
+    <div class="comment">
+        <div class="comment-header">
+            <strong>{{ comment.author }}</strong>
+            <span class="comment-date">{{ comment.created|date:"d M Y, H:i" }}</span>
+        </div>
+        <p>{{ comment.body }}</p>
+    </div>
+    {% empty %}
+    <p>Be the first to comment.</p>
+    {% endfor %}
+</section>
+
+<section id="add-comment">
+    <h2>Leave a comment</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-field">
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.errors %}
+            <ul class="errorlist">
+                {% for error in field.errors %}<li>{{ error }}</li>{% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <button type="submit">Post Comment</button>
+    </form>
+</section>
+{% endblock %}

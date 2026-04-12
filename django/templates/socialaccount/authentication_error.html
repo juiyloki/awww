@@ -1,0 +1,14 @@
+{% extends "pages/base.html" %}
+{% load i18n %}
+
+{% block title %}Login Error{% endblock %}
+
+{% block content %}
+<article>
+    <h1>Third-Party Login Failure</h1>
+    <section>
+        <p>An error occurred while attempting to login via your third-party account.</p>
+        <p><a href="{% url 'account_login' %}">← Back to Login</a></p>
+    </section>
+</article>
+{% endblock %}

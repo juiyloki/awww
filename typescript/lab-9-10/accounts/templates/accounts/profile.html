@@ -1,0 +1,17 @@
+{% extends "pages/base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<article>
+<h1>Your Profile</h1>
+<section>
+<table class="data-table">
+    <tr><th>Username</th><td>{{ user.username }}</td></tr>
+    <tr><th>Email</th><td>{{ user.email }}</td></tr>
+    <tr><th>Joined</th><td>{{ user.date_joined|date:"d M Y" }}</td></tr>
+    <tr><th>Staff</th><td>{{ user.is_staff|yesno:"Yes,No" }}</td></tr>
+</table>
+</section>
+</article>
+{% endblock %}

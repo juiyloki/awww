@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+    <h1>Contact Me</h1>
+
+    <!--
+        form: wraps all the inputs that get submitted together.
+        action="/submit": where the browser sends the data
+        method="POST": sends data in the request body, not in the URL.
+                        (Use POST for forms that change state or send private data).
+    -->
+    <form action="/submit" method="POST">
+
+        <!-- fieldset: groups related inputs visually and semantically -->
+        <fieldset>
+            <legend>Your Details</legend>
+
+            <!--
+                label + input pair:
+                - "for" on the label must match "id" on the input.
+                - This links them so clicking the label focuses the input
+                  and screen readers read the label when the input is focused.
+                - "name" is what the server sees.
+                - "required" makes the browser refuse to submit if the field is empty.
+            -->
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            <br><br>
+
+            <!-- type="email" makes the browser validate the @ format automatically -->
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <br><br>
+
+            <!-- textarea: multi-line text input — rows/cols set the default visible size -->
+            <label for="message">Message</label><br>
+            <textarea id="message" name="message" rows="5" cols="40" required></textarea>
+            <br><br>
+
+            <!-- select: a dropdown — the "value" of each option is what the server receives -->
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject">
+                <option value="General">General</option>
+                <option value="Bug Report">Bug Report</option>
+                <option value="Feature Request">Feature Request</option>
+            </select>
+            <br><br>
+
+        </fieldset>
+
+        <!-- type="submit" turns the button into a form submitter -->
+        <button type="submit">Send Message</button>
+
+    </form>
+
+    </main>
+
+    <footer>
+        <p>&copy; Agata Kopec</p>
+    </footer>
+
+</body>
+</html>

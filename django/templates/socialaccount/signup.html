@@ -1,0 +1,29 @@
+{% extends "pages/base.html" %}
+{% load i18n %}
+
+{% block title %}Complete Sign Up{% endblock %}
+
+{% block content %}
+<article>
+    <h1>Complete Sign Up</h1>
+    <section>
+        <p>You are signing in via {{ account.get_provider.name }}. Please complete the form below.</p>
+        <form method="post" action="{% url 'socialaccount_signup' %}">
+            {% csrf_token %}
+            {% for field in form %}
+            <div>
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                <ul class="errorlist">
+                    {% for error in field.errors %}<li>{{ error }}</li>{% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {% endfor %}
+            {{ redirect_field }}
+            <button type="submit">Sign Up</button>
+        </form>
+    </section>
+</article>
+{% endblock %}
